@@ -1,7 +1,8 @@
+@import "../../../../styles.scss";
+
 .navbar {
-  //width: 100%;
-  background-color: #fff;
-  border-bottom: 0.5px solid #d1d1d1;
+  background-color: $back-color;
+  border-bottom: 0.5px solid $border-color;
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -26,7 +27,7 @@
         text-decoration: none;
         transition-duration: 0.4s;
         &:hover {
-          color: #970f63;
+          color: $primary-color;
         }
       }
     }
