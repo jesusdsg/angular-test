@@ -20,6 +20,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    redirectTo: 'pages',
+  },
 ];
 
 @NgModule({
