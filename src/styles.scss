@@ -1,7 +1,9 @@
 $back-color: #fff;
 $primary-color: #b82020;
+$secondary-color: #e93434;
 $text-color: #252525;
 $border-color: #d1d1d1;
+$border-radius: 20px;
 
 * {
   padding: 0;
@@ -16,6 +18,34 @@ h3 {
 
 p,
 span,
-a {
+a,
+label {
   font-family: "Roboto", sans-serif;
+}
+
+.form-input {
+  padding: 0.5rem 1rem;
+  background-color: $back-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  width: auto;
+  margin: 0.5rem 0;
+}
+
+.btn {
+  width: auto;
+  border-radius: $border-radius;
+  border: none;
+  padding: 1rem 1rem;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+.primary {
+  background-color: $primary-color;
+  color: $back-color;
+  width: 100%;
+
+  &:hover {
+    background-color: rgba($color: $secondary-color, $alpha: 1);
+  }
 }

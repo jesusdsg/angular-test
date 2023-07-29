@@ -9,7 +9,7 @@ import { MenuModel } from 'src/models/layout/menu.model';
 export class NavbarComponent implements OnInit {
   menu: MenuModel[] = [
     { name: 'Home', link: '/' },
-    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Dashboard', link: 'pages/dashboard' },
   ];
 
   constructor() {}

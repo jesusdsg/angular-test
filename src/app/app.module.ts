@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { CardComponent } from './shared/components/card/card.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent, NavbarComponent, CardComponent],

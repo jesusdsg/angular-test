@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CardComponent } from './components/card/card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,6 @@ import { CardComponent } from './components/card/card.component';
     DashboardComponent,
     CardComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule],
+  imports: [CommonModule, PagesRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class PagesModule {}
