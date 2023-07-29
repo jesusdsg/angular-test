@@ -4,13 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { CardComponent } from './shared/components/card/card.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, NavbarComponent, CardComponent],
-  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  declarations: [AppComponent, LayoutComponent],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })

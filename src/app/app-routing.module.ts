@@ -4,7 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from 'src/guards/auth.guard';
 
 const routes: Routes = [
-  /* First and main route to get the pages list */
+  /* First and main route to get the pages list with auth */
   {
     path: '',
     component: LayoutComponent,
@@ -19,6 +19,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('../pages/pages.module').then((m) => m.PagesModule),
         canActivate: [AuthGuard],
+      },
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('../app/auth/auth.module').then((m) => m.AuthModule),
+        canActivate: [],
       },
     ],
   },
