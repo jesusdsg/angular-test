@@ -12,6 +12,10 @@ export class StorageService {
     localStorage.setItem(key, value);
   }
 
+  public saveDataObject(key: string, object: any) {
+    localStorage.setItem(key, JSON.stringify(object));
+  }
+
   public getData(key: string) {
     return localStorage.getItem(key);
   }
