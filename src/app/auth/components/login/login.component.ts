@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/pages/services/storage.service';
+import { StorageService } from '@pages/services/storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -39,15 +39,20 @@ export class LoginComponent implements OnInit {
     this.setForm();
   }
 
+  setLogged(email: string): void {
+    this.storage.saveData('currentUser', email);
+    this.router.navigate(['pages/dashboard']);
+  }
+
   onLogin(): void {
     if (this.loginForm.valid) {
-      console.log('Data is ', this.loginForm.value);
+      /* Hardcoded password method */
       const { email, password } = this.loginForm.value;
       email == 'admin@mail.com' && password == 'NicePassword123.'
-        ? this.storage.saveData('currentUser', email)
+        ? this.setLogged(email)
         : alert('Invalid username or password');
     } else {
-      //alert('Invalid credentials');
+      alert('Invalid credentials');
     }
   }
 }
