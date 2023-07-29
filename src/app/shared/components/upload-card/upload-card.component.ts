@@ -35,7 +35,9 @@ export class UploadCardComponent implements OnInit {
     if (extn !== 'csv') {
       alert('File type is not supported');
     }
-
+    /**
+     * Read the file and split per row data
+     */
     let reader: FileReader = new FileReader();
     reader.readAsText(file);
     reader.onload = (e) => {
@@ -43,11 +45,8 @@ export class UploadCardComponent implements OnInit {
       let data = csv.split('\n');
       data.forEach((item, index) => {
         index != 0 ? this.fileData.push(item) : null;
-        console.log('item is ', item);
       });
       console.log('File Data', this.fileData);
     };
-    //Reset the file input value to allow the user to select the same file again
-    //this.fileInput.nativeElement.value = '';
   }
 }
