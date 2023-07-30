@@ -46,10 +46,7 @@ export class UploadCardComponent implements OnInit {
       let data = csv.split('\n');
       data.forEach((item, index) => {
         this.fileData.push(item.split(','));
-        /*    index == 0 ? console.log('i', item.split(',')) : null;
-        index != 0 ? this.fileData.push(item.split(',')) : null; */
       });
-      //console.log('File Data', this.fileData);
       this.fileService.getFileData(this.fileData);
     };
   }

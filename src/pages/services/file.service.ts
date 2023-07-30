@@ -33,6 +33,7 @@ export class FileService {
    * @param object
    */
   setFile(object: any) {
+    this.storage.removeData('currentFile');
     this.storage.saveDataObject('currentFile', object);
   }
 
@@ -50,7 +51,7 @@ export class FileService {
     //Calculate by date
     for (let d = 0; d < this.dateList.length; d++) {
       let stateByDate: any[] = [];
-      array.map((row, index) => {
+      array.forEach((row, index) => {
         //Omit headers row
         if (index != 0) {
           //Set State by Date
@@ -68,12 +69,11 @@ export class FileService {
           }
         }
       });
-      //
-      //console.log('""""""', stateByDate);
+      //Get the highest and lowest
       const highest = this.getHighest(stateByDate);
       const lowest = this.getLowest(stateByDate);
       this.reports.push({
-        date: this.dateList[d].date,
+        date: Date.parse(this.dateList[d].date),
         highest: highest.name,
         lowest: lowest.name,
       });
@@ -81,6 +81,7 @@ export class FileService {
     }
     //Set the reports in localsotrage
     this.setFile(this.reports);
+    console.log('Reports', this.reports);
   }
 
   /**
@@ -91,7 +92,7 @@ export class FileService {
   getHighest(array: StateModel[]): StateModel {
     let max = 0;
     let highest: StateModel = { name: '', value: 0, date: '' };
-    array.map((item: StateModel) => {
+    array.forEach((item: StateModel) => {
       if (item.value > max) (highest = item), (max = item.value);
     });
     return highest;
@@ -105,7 +106,7 @@ export class FileService {
   getLowest(array: StateModel[]): StateModel {
     let min = 0;
     let lowest: StateModel = { name: '', value: 0, date: '' };
-    array.map((item: StateModel) => {
+    array.forEach((item: StateModel) => {
       if (item.value <= min) (lowest = item), (min = item.value);
     });
     return lowest;

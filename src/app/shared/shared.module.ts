@@ -4,10 +4,21 @@ import { CardComponent } from './components/card/card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { UploadCardComponent } from './components/upload-card/upload-card.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
-  declarations: [CardComponent, NavbarComponent, UploadCardComponent],
+  declarations: [
+    CardComponent,
+    NavbarComponent,
+    UploadCardComponent,
+    SpinnerComponent,
+  ],
   imports: [CommonModule, RouterModule],
-  exports: [CardComponent, NavbarComponent, UploadCardComponent],
+  exports: [
+    CardComponent,
+    NavbarComponent,
+    UploadCardComponent,
+    SpinnerComponent,
+  ],
 })
 export class SharedModule {}

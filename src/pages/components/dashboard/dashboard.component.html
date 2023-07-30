@@ -1,1 +1,5 @@
 <app-upload-card></app-upload-card>
+
+<div *ngFor="let item of fileService.currentFile | async">
+  <div style="border: 1px solid #bbb; margin: 1rem 2rem">{{ item }}</div>
+</div>
