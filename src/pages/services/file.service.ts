@@ -73,7 +73,7 @@ export class FileService {
       const highest = this.getHighest(stateByDate);
       const lowest = this.getLowest(stateByDate);
       this.reports.push({
-        date: Date.parse(this.dateList[d].date),
+        date: this.dateList[d].date,
         highest: highest.name,
         lowest: lowest.name,
       });

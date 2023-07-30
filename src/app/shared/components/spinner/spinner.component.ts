@@ -6,8 +6,6 @@ import { SpinnerService } from '@app/shared/services/spinner.service';
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.scss'],
 })
-export class SpinnerComponent implements OnInit {
+export class SpinnerComponent {
   constructor(public spinner: SpinnerService) {}
-
-  ngOnInit(): void {}
 }

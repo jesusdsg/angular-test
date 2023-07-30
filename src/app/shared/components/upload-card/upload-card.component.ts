@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { SpinnerService } from '@app/shared/services/spinner.service';
 import { FileService } from '@pages/services/file.service';
 
 @Component({
@@ -6,16 +7,17 @@ import { FileService } from '@pages/services/file.service';
   templateUrl: './upload-card.component.html',
   styleUrls: ['./upload-card.component.scss'],
 })
-export class UploadCardComponent implements OnInit {
+export class UploadCardComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   @Input() fileInfo!: string;
   fileData: any[] = [];
 
-  constructor(public fileService: FileService) {
+  constructor(
+    public fileService: FileService,
+    private spinner: SpinnerService
+  ) {
     this.fileInfo = 'Drag & drop files here';
   }
-
-  ngOnInit(): void {}
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -31,23 +33,27 @@ export class UploadCardComponent implements OnInit {
   }
 
   sendFile(file: File) {
+    this.spinner.show();
     //Validate the exten
     let extn = file.name.split('.').pop();
     if (extn !== 'csv') {
       alert('File type is not supported');
+      this.spinner.hide();
+    } else {
+      /**
+       * Read the file and split per row data
+       */
+      let reader: FileReader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = (e) => {
+        let csv: string = reader.result as string;
+        let data = csv.split('\n');
+        data.forEach((item, index) => {
+          this.fileData.push(item.split(','));
+        });
+        this.fileService.getFileData(this.fileData);
+        this.spinner.hide();
+      };
     }
-    /**
-     * Read the file and split per row data
-     */
-    let reader: FileReader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = (e) => {
-      let csv: string = reader.result as string;
-      let data = csv.split('\n');
-      data.forEach((item, index) => {
-        this.fileData.push(item.split(','));
-      });
-      this.fileService.getFileData(this.fileData);
-    };
   }
 }
