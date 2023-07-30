@@ -10,26 +10,27 @@ export class UploadCardComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   @Input() fileInfo!: string;
   fileData: any[] = [];
+
   constructor(private fileService: FileService) {
     this.fileInfo = 'Drag & drop files here';
   }
 
   ngOnInit(): void {}
 
-  onDragOver(event: any) {
+  onDragOver(event: DragEvent) {
     event.preventDefault();
   }
   // From drag and drop
-  onDropSuccess(event: any) {
+  onDropSuccess(event: DragEvent) {
     event.preventDefault();
-    this.sendFile(event.dataTransfer.files[0]);
+    this.sendFile(event.dataTransfer!.files[0]);
   }
   // From attachment link
-  onChange(event: any) {
+  onChange(event: { target: HTMLInputElement | any }) {
     this.sendFile(event.target.files[0]);
   }
 
-  sendFile(file: any) {
+  sendFile(file: File) {
     //Validate the exten
     let extn = file.name.split('.').pop();
     if (extn !== 'csv') {
@@ -44,9 +45,10 @@ export class UploadCardComponent implements OnInit {
       let csv: string = reader.result as string;
       let data = csv.split('\n');
       data.forEach((item, index) => {
-        index != 0 ? this.fileData.push(item) : null;
+        index != 0 ? this.fileData.push(item.split(',')) : null;
       });
-      console.log('File Data', this.fileData);
+      //console.log('File Data', this.fileData);
+      this.fileService.getMaxMountByArray(this.fileData);
     };
   }
 }
