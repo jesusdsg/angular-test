@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   checkUser(): void {
     this.auth.currentUser.subscribe({
       next(user) {
-        console.log('User', user);
+        //console.log('User', user);
       },
       error(message) {
         console.error('Error: ', message);

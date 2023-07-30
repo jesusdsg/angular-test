@@ -45,7 +45,9 @@ export class UploadCardComponent implements OnInit {
       let csv: string = reader.result as string;
       let data = csv.split('\n');
       data.forEach((item, index) => {
-        index != 0 ? this.fileData.push(item.split(',')) : null;
+        this.fileData.push(item.split(','));
+        /*    index == 0 ? console.log('i', item.split(',')) : null;
+        index != 0 ? this.fileData.push(item.split(',')) : null; */
       });
       //console.log('File Data', this.fileData);
       this.fileService.getMaxMountByArray(this.fileData);
