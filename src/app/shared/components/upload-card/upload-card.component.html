@@ -31,6 +31,6 @@
   </div>
 </div>
 
-<div *ngFor="let item of fileData">
+<div *ngFor="let item of fileService.currentFile | async">
   <div style="border: 1px solid #bbb; margin: 1rem 2rem">{{ item }}</div>
 </div>

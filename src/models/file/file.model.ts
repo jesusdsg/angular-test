@@ -1,5 +1,9 @@
 export class StateModel {
   name!: string;
-  total!: number;
-  dates!: any[];
+  value!: number;
+  date!: string;
+}
+
+export class DateModel {
+  date!: string;
 }

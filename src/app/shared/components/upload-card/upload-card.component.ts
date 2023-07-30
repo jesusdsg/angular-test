@@ -11,7 +11,7 @@ export class UploadCardComponent implements OnInit {
   @Input() fileInfo!: string;
   fileData: any[] = [];
 
-  constructor(private fileService: FileService) {
+  constructor(public fileService: FileService) {
     this.fileInfo = 'Drag & drop files here';
   }
 
@@ -50,7 +50,7 @@ export class UploadCardComponent implements OnInit {
         index != 0 ? this.fileData.push(item.split(',')) : null; */
       });
       //console.log('File Data', this.fileData);
-      this.fileService.getMaxMountByArray(this.fileData);
+      this.fileService.getFileData(this.fileData);
     };
   }
 }
