@@ -1,5 +1,24 @@
 <app-upload-card></app-upload-card>
-
-<div *ngFor="let item of fileService.currentFile | async">
-  <div style="border: 1px solid #bbb; margin: 1rem 2rem">{{ item }}</div>
+<br />
+<h3 class="title">Report of the states by date</h3>
+<div
+  *ngFor="
+    let item of fileService.currentFile
+      | async
+      | paginate : { itemsPerPage: 5, currentPage: p }
+  "
+>
+  <div class="list-container">
+    <div><strong>Date: </strong>{{ item.date }}</div>
+    <div>
+      <strong>State with the highest accumulated: </strong>{{ item.highest }}
+    </div>
+    <div>
+      <strong>State with the lowest accumulated: </strong>{{ item.lowest }}
+    </div>
+  </div>
 </div>
+<pagination-controls
+  (pageChange)="p = $event"
+  class="my-pagination"
+></pagination-controls>

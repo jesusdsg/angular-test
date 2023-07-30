@@ -8,8 +8,7 @@
       "@pages/*": ["src/pages/*"],
       "@shared/*": ["src/app/shared/*"],
       "@auth/*":["src/app/auth"],
-      "@models/*": ["src/models/*"]
-
+      "@models/*": ["src/models/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

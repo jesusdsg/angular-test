@@ -7,6 +7,7 @@ import { FileService } from '@pages/services/file.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  p: number = 1;
   constructor(public fileService: FileService) {}
 
   ngOnInit(): void {}
