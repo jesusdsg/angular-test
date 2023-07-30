@@ -9,12 +9,14 @@
   "
 >
   <div class="list-container">
-    <div><strong>Date: </strong>{{ item.date }}</div>
+    <div><strong>Date: </strong>{{ item.date | date : "mediumDate" }}</div>
     <div>
-      <strong>State with the highest accumulated: </strong>{{ item.highest }}
+      <strong>Highest: </strong>{{ item.result.highest.name }} -
+      <strong>{{ item.result.highest.value }}</strong>
     </div>
     <div>
-      <strong>State with the lowest accumulated: </strong>{{ item.lowest }}
+      <strong>Lowest: </strong>{{ item.result.lowest.name }} -
+      <strong>{{ item.result.lowest.value }}</strong>
     </div>
   </div>
 </div>

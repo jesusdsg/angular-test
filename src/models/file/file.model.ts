@@ -4,6 +4,11 @@ export class StateModel {
   date!: string;
 }
 
+export class AmountModel {
+  name!: string;
+  value!: number;
+}
+
 export class DateModel {
   date!: string;
 }

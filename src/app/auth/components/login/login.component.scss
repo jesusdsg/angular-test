@@ -2,25 +2,29 @@
   width: 30%;
   margin: auto;
 
-  @media (max-width: 1080px) {
-    width: auto;
-  }
-
   .login-container {
     width: 100%;
 
     .control-container {
       display: grid;
       padding: 0.5rem 0rem;
-      @media (max-width: 1080px) {
-        padding: 0.5rem 0rem;
-      }
     }
     .btn-container {
       width: auto;
       padding: 0.5rem 0rem;
+    }
+  }
+}
 
-      @media (max-width: 1080px) {
+@media (max-width: 1080px) {
+  .main {
+    width: auto;
+
+    .login-container {
+      .control-container {
+        padding: 0.5rem 0rem;
+      }
+      .btn-container {
         padding: 0.5rem 0rem;
       }
     }
