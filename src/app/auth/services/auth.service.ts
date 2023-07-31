@@ -6,8 +6,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private currentUserSubject!: BehaviorSubject<any>;
-  public currentUser!: Observable<any>;
+  private currentUserSubject!: BehaviorSubject<string>;
+  public currentUser!: Observable<string>;
 
   constructor(private storage: StorageService) {
     this.currentUserSubject = new BehaviorSubject<any>(
@@ -16,7 +16,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): any {
+  public get currentUserValue(): string {
     return this.currentUserSubject.value;
   }
 

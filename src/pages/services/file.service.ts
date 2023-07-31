@@ -13,6 +13,7 @@ export class FileService {
   stateList: StateModel[] = [];
   dateList: DateModel[] = [];
   reports: any[] = [];
+  totals: any = {};
 
   constructor(private storage: StorageService) {
     this.currentFileSubject = new BehaviorSubject<any>(
@@ -25,9 +26,11 @@ export class FileService {
    * Save File in localstorage
    * @param object
    */
-  setFile(object: any) {
-    this.storage.removeData('currentFile');
-    this.storage.saveDataObject('currentFile', object);
+  setFiles(reports: Object, totals: Object) {
+    this.storage.removeData('reports');
+    this.storage.removeData('totals');
+    this.storage.saveDataObject('reports', reports);
+    this.storage.saveDataObject('totals', totals);
   }
 
   getDateList(array: any): void {
@@ -43,7 +46,7 @@ export class FileService {
     let dateStartIndex = 14;
     //Calculate the amounts by date
     for (let d = 0; d < this.dateList.length; d++) {
-      let stateByDate: any[] = [];
+      let stateByDate: StateModel[] = [];
       array.forEach((row, index) => {
         //Omit headers row
         if (index != 0) {
@@ -57,10 +60,20 @@ export class FileService {
       });
       dateStartIndex++;
     }
+
+    //Get totals by State
+    array.forEach((row: any, index) => {
+      index != 0 && this.getTotalByRow(row);
+    });
+
     //Set the reports in localsotrage
-    this.setFile(this.reports);
-    console.log('Reports', this.reports);
-    console.log('List of states', this.stateList);
+    const amountsInGeneral = this.getHighestAndLowest(this.stateList);
+    this.totals.totals = amountsInGeneral;
+    this.totals.states = this.stateList;
+    this.setFiles(this.reports, this.totals);
+
+    //console.log('Reports', this.reports);
+    //console.log('List of states', this.stateList);
   }
 
   /**
@@ -80,7 +93,7 @@ export class FileService {
           (highest.value = item.value),
           (max = item.value);
       //Lowest
-      if (item.value <= max)
+      if (item.value <= min)
         (lowest.name = item.name),
           (lowest.value = item.value),
           (min = item.value);
@@ -91,11 +104,11 @@ export class FileService {
 
   getTotalByRow(row: any[]): void {
     /* Get the sum by Row */
-    let start = 13,
+    let start = 14,
       end = row.length - 1,
       sum = 0;
     for (let i = start; i <= end; i++) sum += parseInt(row[i]);
-    this.setStateInArray(row[6], sum);
+    this.setStateInArray(row[6], sum, parseInt(row[13]));
   }
 
   setStateByDate(
@@ -122,14 +135,15 @@ export class FileService {
     }
   }
 
-  setStateInArray(stateName: string, amount: number): void {
+  setStateInArray(stateName: string, amount: number, population: number): void {
     let result = this.stateList.find(
       (x: StateModel) => x.name.toLowerCase() == stateName.toLowerCase()
     );
     if (result) {
       result.value += amount;
+      result.population += population;
     } else {
-      this.stateList.push({ name: stateName, value: amount, date: '' });
+      this.stateList.push({ name: stateName, value: amount, population });
     }
   }
 }

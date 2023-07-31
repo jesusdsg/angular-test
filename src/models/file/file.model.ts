@@ -1,7 +1,7 @@
 export class StateModel {
   name!: string;
   value!: number;
-  date!: string;
+  population!: number;
 }
 
 export class AmountModel {
