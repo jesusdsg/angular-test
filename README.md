@@ -1,27 +1,26 @@
 # AngularTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.9.
+Hello reader, this project is is created to participate in the selection call for the Angular developer position.
+If you are here then you are the tech recruiter, I hope you find this project useful. 😄
 
-## Development server
+## Project info
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It is a very simple project that is created to read a specific csv file for this exercise.
 
-## Code scaffolding
+### Specs
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Used SASS and vanila css for styles.
+- Non libraries for reading files.
+- Used angular-charts for the Chart feature.
+- Protected routes with guards 💂
+- Lightweight project
+- Non Database connection so the user login is hardcoded. 🤓
 
-## Build
+## How to deploy
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Open the terminal in the project folder.
+- Run `npm install` to install node modules dependencies, this is important to run the server.
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- In the main page select dashboard on menu to login in the app. The user is `admin@mail.com` and the password `NicePassword123.`
+- You will find a csv file that you can drop or select in the dashboard page.
+- A loading page will appear when the analytics process are running so you will need to wait, if doesn't work at the first time, please reload the page.

@@ -1,0 +1,31 @@
+@import "variables";
+
+.upload-card {
+  border-radius: 6px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border: 2px solid $border-color;
+  padding: 1rem 2rem;
+  border-style: dashed;
+
+  .main-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+  }
+
+  .upload-icon {
+    height: 40px;
+    width: auto;
+  }
+  .file-container {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  /* .upload-icon {
+        height: 200px;
+    } */
+}

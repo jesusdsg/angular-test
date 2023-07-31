@@ -1,0 +1,51 @@
+@import "variables";
+
+.navbar {
+  background-color: $back-color;
+  border-bottom: 0.5px solid $border-color;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .logo {
+    width: 20%;
+  }
+
+  .separator {
+    width: 60%;
+  }
+
+  a {
+    text-decoration: none;
+    color: $text-color;
+  }
+
+  .menu {
+    width: auto;
+    display: flex;
+    gap: 1rem;
+    ul {
+      list-style: none;
+      a {
+        color: #464646;
+        text-decoration: none;
+        transition-duration: 0.4s;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .btn-logout {
+    background-color: transparent;
+    border: none;
+
+    svg {
+      height: 20px;
+      cursor: pointer;
+      transition-duration: 0.5s;
+    }
+  }
+}

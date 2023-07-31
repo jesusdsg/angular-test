@@ -1,0 +1,35 @@
+@import "variables";
+
+.list-container {
+  border: 1px solid $border-color;
+  padding: 1rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  gap: 2rem;
+  border-radius: 20px;
+  margin: 1rem;
+  color: rgba($text-color, 0.8);
+}
+
+.title {
+  margin: 1rem 2rem;
+  font-family: "Open Sans", sans-serif;
+  color: $primary-color;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: $primary-color;
+  border-radius: $border-radius;
+}
+
+@media (max-width: 800px) {
+  .list-container {
+    font-size: smaller;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .title {
+    margin: 1rem auto;
+  }
+}

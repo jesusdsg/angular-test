@@ -1,0 +1,33 @@
+<div class="main">
+  <app-card>
+    <form
+      class="login-container"
+      [formGroup]="loginForm"
+      (ngSubmit)="onLogin()"
+    >
+      <div class="control-container">
+        <input
+          type="email"
+          class="form-input"
+          id="inputEmail"
+          formControlName="email"
+          placeholder="Enter Email"
+          required
+        />
+      </div>
+      <div class="control-container">
+        <input
+          type="password"
+          class="form-input"
+          id="inputPassword"
+          formControlName="password"
+          placeholder="Enter Password"
+          required
+        />
+      </div>
+      <div class="btn-container">
+        <button class="btn primary" type="submit">Login</button>
+      </div>
+    </form>
+  </app-card>
+</div>
