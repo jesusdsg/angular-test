@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AgChartsAngularModule } from 'ag-charts-angular';
 
 @NgModule({
   declarations: [HomeComponent, DashboardComponent],
@@ -16,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     SharedModule,
     NgxPaginationModule,
+    AgChartsAngularModule,
   ],
 })
 export class PagesModule {}
