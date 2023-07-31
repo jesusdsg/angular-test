@@ -16,6 +16,9 @@ export class DashboardComponent implements OnInit {
   constructor(public fileService: FileService) {
     this.fileService.currentStates.subscribe((res) => (this.states = res));
     this.options = {
+      background: {
+        fill: 'transparent',
+      },
       autoSize: true,
       title: {
         text: 'State of USA with covid Population',
