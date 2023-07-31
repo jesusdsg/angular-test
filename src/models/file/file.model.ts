@@ -2,6 +2,7 @@ export class StateModel {
   name!: string;
   value!: number;
   population!: number;
+  percent?: number | string;
 }
 
 export class AmountModel {

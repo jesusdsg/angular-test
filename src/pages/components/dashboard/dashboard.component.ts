@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
           data: this.states,
           type: 'pie',
           calloutLabelKey: 'name',
+          legendItemKey: 'percent',
           sectorLabelKey: 'population',
           angleKey: 'population',
           calloutLabel: {
@@ -66,6 +67,8 @@ export class DashboardComponent implements OnInit {
       ],
     };
   }
+
+  getStatesPercent(): void {}
 
   ngOnInit(): void {}
 }

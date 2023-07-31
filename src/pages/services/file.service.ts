@@ -86,6 +86,7 @@ export class FileService {
 
     //Set the reports in localsotrage
     const amountsInGeneral = this.getHighestAndLowest(this.stateList);
+    this.getStatePercent();
     this.setFiles(this.reports, [amountsInGeneral], this.stateList);
 
     //console.log('Reports', this.reports);
@@ -161,5 +162,17 @@ export class FileService {
     } else {
       this.stateList.push({ name: stateName, value: amount, population });
     }
+  }
+
+  getStatePercent(): void {
+    this.stateList.forEach((state) => {
+      state.value != 0
+        ? (state.percent =
+            state.name +
+            ' ' +
+            (state.population / state.value).toFixed(2) +
+            '%')
+        : (state.percent = state.name + ' ' + 0 + '%');
+    });
   }
 }
