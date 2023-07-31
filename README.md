@@ -7,6 +7,9 @@ If you are here then you are the tech recruiter, I hope you find this project us
 
 It is a very simple project that is created to read a specific csv file for this exercise.
 
+
+![Screenshot of a project preview.](https://i.imgur.com/kbMAtax.png)
+
 ### Specs
 
 - Used SASS and vanila css for styles.
