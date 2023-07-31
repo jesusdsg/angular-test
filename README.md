@@ -22,5 +22,5 @@ It is a very simple project that is created to read a specific csv file for this
 - Run `npm install` to install node modules dependencies, this is important to run the server.
 - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 - In the main page select dashboard on menu to login in the app. The user is `admin@mail.com` and the password `NicePassword123.`
-- You will find a csv file that you can drop or select in the dashboard page.
+- You will find a csv file in the project folder `files` , you can drop or select in the dashboard page.
 - A loading page will appear when the analytics process are running so you will need to wait, if doesn't work at the first time, please reload the page.
