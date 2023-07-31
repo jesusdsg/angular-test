@@ -53,6 +53,7 @@ export class UploadCardComponent {
         });
         this.fileService.getFileData(this.fileData);
         this.spinner.hide();
+        window.location.reload();
       };
     }
   }
