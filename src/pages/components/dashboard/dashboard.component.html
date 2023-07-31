@@ -1,5 +1,6 @@
 <app-upload-card></app-upload-card>
 <br />
+<!-- First View -->
 <h3 class="title">Report of the states by date</h3>
 <div
   *ngFor="
@@ -24,3 +25,20 @@
   (pageChange)="p = $event"
   class="my-pagination"
 ></pagination-controls>
+
+<br />
+<!-- Second view -->
+<h3 class="title">Total Report of states</h3>
+<div *ngFor="let item of fileService.currentTotals | async">
+  <div class="list-container">
+    <div>
+      Most affected is <strong>{{ item.highest.name }}</strong> with
+      <strong>{{ item.highest.value }}</strong> deads to date
+    </div>
+
+    <div>
+      Less affected is <strong>{{ item.lowest.name }}</strong> with
+      <strong>{{ item.lowest.value }}</strong>
+    </div>
+  </div>
+</div>

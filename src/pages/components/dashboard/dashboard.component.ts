@@ -8,7 +8,9 @@ import { FileService } from '@pages/services/file.service';
 })
 export class DashboardComponent implements OnInit {
   p: number = 1;
-  constructor(public fileService: FileService) {}
+  constructor(public fileService: FileService) {
+    this.fileService.currentFile.subscribe();
+  }
 
   ngOnInit(): void {}
 }

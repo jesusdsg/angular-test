@@ -12,3 +12,11 @@ export class AmountModel {
 export class DateModel {
   date!: string;
 }
+
+export class ReportModel {
+  date!: string | Date;
+  result!: {
+    highest: {};
+    lowest: {};
+  };
+}

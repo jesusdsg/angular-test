@@ -1,36 +1,54 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageService } from './storage.service';
-import { AmountModel, DateModel, StateModel } from '@models/file/file.model';
+import {
+  AmountModel,
+  DateModel,
+  ReportModel,
+  StateModel,
+} from '@models/file/file.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FileService {
   private currentFileSubject!: BehaviorSubject<any>;
+  private currentTotalsSubject!: BehaviorSubject<any>;
+  private currentStatesSubject!: BehaviorSubject<any>;
   public currentFile!: Observable<any>;
+  public currentTotals!: Observable<any>;
+  public currentStates!: Observable<any>;
 
   stateList: StateModel[] = [];
   dateList: DateModel[] = [];
-  reports: any[] = [];
-  totals: any = {};
+  reports: ReportModel[] = [];
 
   constructor(private storage: StorageService) {
     this.currentFileSubject = new BehaviorSubject<any>(
-      JSON.parse(this.storage.getData('currentFile') || '{}')
+      JSON.parse(this.storage.getData('reports') || '[]')
     );
     this.currentFile = this.currentFileSubject.asObservable();
+    this.currentTotalsSubject = new BehaviorSubject<any>(
+      JSON.parse(this.storage.getData('totals') || '[]')
+    );
+    this.currentTotals = this.currentTotalsSubject.asObservable();
+    this.currentStatesSubject = new BehaviorSubject<any>(
+      JSON.parse(this.storage.getData('states') || '[]')
+    );
+    this.currentStates = this.currentStatesSubject.asObservable();
   }
 
   /**
    * Save File in localstorage
    * @param object
    */
-  setFiles(reports: Object, totals: Object) {
+  setFiles(reports: Object, totals: Object, states: Object) {
     this.storage.removeData('reports');
     this.storage.removeData('totals');
+    this.storage.removeData('states');
     this.storage.saveDataObject('reports', reports);
     this.storage.saveDataObject('totals', totals);
+    this.storage.saveDataObject('states', states);
   }
 
   getDateList(array: any): void {
@@ -68,9 +86,7 @@ export class FileService {
 
     //Set the reports in localsotrage
     const amountsInGeneral = this.getHighestAndLowest(this.stateList);
-    this.totals.totals = amountsInGeneral;
-    this.totals.states = this.stateList;
-    this.setFiles(this.reports, this.totals);
+    this.setFiles(this.reports, [amountsInGeneral], this.stateList);
 
     //console.log('Reports', this.reports);
     //console.log('List of states', this.stateList);
